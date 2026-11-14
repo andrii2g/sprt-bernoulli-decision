@@ -3,6 +3,14 @@
 A small .NET 10 implementation of Wald's sequential probability ratio test
 for two simple, independent and identically distributed Bernoulli hypotheses.
 
+## Report preview
+
+Generated with the default configuration: 10,000 evaluation trials per scenario
+and seed 42. The offline report includes likelihood trajectories, sample-by-sample
+playback, sample-count distributions, and the fixed-sample comparison.
+
+![Generated SPRT report showing likelihood trajectories, evaluation metrics, sample-count distribution, and fixed-sample calibration](docs/images/report.png)
+
 ## Build and test
 
 Install the .NET 10 SDK, then run from this directory:
