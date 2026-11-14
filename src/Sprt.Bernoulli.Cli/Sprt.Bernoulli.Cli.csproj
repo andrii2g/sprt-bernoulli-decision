@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
     <ProjectReference Include="..\Sprt.Bernoulli\Sprt.Bernoulli.csproj" />
@@ -11,4 +11,6 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup><EmbeddedResource Include="ReportTemplate.html" /></ItemGroup>
+  <ItemGroup><InternalsVisibleTo Include="Sprt.Bernoulli.Tests" /></ItemGroup>
 </Project>

@@ -1,6 +1,5 @@
 using System.Globalization;
-using System.Text.Json;
-using System.Text.Json.Serialization;
+using Sprt.Bernoulli.Cli;
 using Sprt.Bernoulli;
 using Sprt.Bernoulli.Simulation;
 
@@ -84,10 +83,7 @@ static int Run(string[] args)
         string output = Path.GetFullPath(Get("output", "reports/latest"));
         Console.WriteLine($"Calibrating baseline and evaluating {trials:N0} trials per scenario...");
         ExperimentResult result = SimulationRunner.Run(options);
-        Directory.CreateDirectory(output);
-        var jsonOptions = new JsonSerializerOptions { WriteIndented = true };
-        jsonOptions.Converters.Add(new JsonStringEnumConverter());
-        File.WriteAllText(Path.Combine(output, "results.json"), JsonSerializer.Serialize(result, jsonOptions));
+        ReportWriter.Write(result, output);
 
         FixedSampleRule rule = result.Calibration.Rule;
         Console.WriteLine($"Fixed rule: N={rule.Samples}, {(rule.CountSuccesses ? "successes" : "failures")} >= {rule.MinimumEvidenceCount} favors H1.");
@@ -101,6 +97,7 @@ static int Run(string[] args)
             Console.WriteLine(FormattableString.Invariant($"{scenario.Name,-10} {s.Samples.Mean,9:F2} {s.Samples.Median,9:F1} {s.Samples.P95,6} {s.Inconclusive.Rate,15:P2} {errorText,21} {scenario.SampleSavingsFraction,17:P2}"));
         }
         Console.WriteLine($"Results: {Path.Combine(output, "results.json")}");
+        Console.WriteLine($"Report: {Path.Combine(output, "report.html")}");
         return 0;
     }
     catch (Exception error) when (error is ArgumentException or FormatException or OverflowException

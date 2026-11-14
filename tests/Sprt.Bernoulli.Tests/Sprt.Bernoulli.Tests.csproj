@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Sprt.Bernoulli\Sprt.Bernoulli.csproj" />
+    <ProjectReference Include="..\..\src\Sprt.Bernoulli.Cli\Sprt.Bernoulli.Cli.csproj" />
   </ItemGroup>
 
 </Project>
