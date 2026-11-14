@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Sprt.Bernoulli.Cli/Sprt.Bernoulli.Cli.csproj" />
+    <Project Path="src/Sprt.Bernoulli/Sprt.Bernoulli.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Sprt.Bernoulli.Tests/Sprt.Bernoulli.Tests.csproj" />
+  </Folder>
+</Solution>
